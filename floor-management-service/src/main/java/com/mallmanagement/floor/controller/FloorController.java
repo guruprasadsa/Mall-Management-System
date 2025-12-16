@@ -14,9 +14,7 @@ public class FloorController {
 
     @Autowired
     private FloorManagementService floorService;
-
-    // Endpoint to ADD a floor
-    // URL: http://localhost:8081/api/floors/add
+	// Endpoint to POST a new floor
     @PostMapping("/add")
     public ResponseEntity<String> addFloor(@RequestBody Floor floor) {
         String result = floorService.addFloor(floor);
@@ -28,5 +26,17 @@ public class FloorController {
     @GetMapping("/all")
     public List<Floor> getFloors() {
         return floorService.getAllFloors();
+    }
+    
+ // URL: http://localhost:8081/api/floors/update/{id}
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateFloor(@PathVariable int id, @RequestBody Floor floor) {
+        return ResponseEntity.ok(floorService.updateFloor(id, floor));
+    }
+
+    // URL: http://localhost:8081/api/floors/delete/{id}
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteFloor(@PathVariable int id) {
+        return ResponseEntity.ok(floorService.deleteFloor(id));
     }
 }

@@ -28,4 +28,16 @@ public class FloorManagementService {
     public List<Floor> getAllFloors() {
         return floorRepository.findAll();
     }
+    
+    public String updateFloor(int id, Floor floor) {
+        int rows = floorRepository.update(id, floor);
+        if (rows > 0) return "Floor updated successfully!";
+        return "Floor not found or update failed.";
+    }
+
+    public String deleteFloor(int id) {
+        int rows = floorRepository.deleteById(id);
+        if (rows > 0) return "Floor deleted successfully!";
+        return "Floor not found or delete failed.";
+    }
 }

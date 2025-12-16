@@ -35,4 +35,21 @@ public class ShopSpaceRepository {
         String sql = "SELECT * FROM shop_spaces WHERE floor_id = ?";
         return jdbcTemplate.query(sql, rowMapper, floorId);
     }
+
+    // Update an existing shop space
+    public int update(int spaceId, ShopSpace space) {
+        String sql = "UPDATE shop_spaces SET floor_id = ?, shop_name = ?, category = ?, status = ? WHERE space_id = ?";
+        return jdbcTemplate.update(sql,
+                space.getFloorId(),
+                space.getShopName(),
+                space.getCategory(),
+                space.getStatus(),
+                spaceId);
+    }
+
+    // Delete a shop space by ID
+    public int deleteById(int spaceId) {
+        String sql = "DELETE FROM shop_spaces WHERE space_id = ?";
+        return jdbcTemplate.update(sql, spaceId);
+    }
 }

@@ -35,4 +35,16 @@ public class FloorRepository {
         String sql = "SELECT * FROM floors";
         return jdbcTemplate.query(sql, floorRowMapper);
     }
+    
+    // Update an existing floor
+    public int update(int id, Floor floor) {
+        String sql = "UPDATE floors SET floor_number = ?, floor_name = ?, description = ? WHERE floor_id = ?";
+        return jdbcTemplate.update(sql, floor.getFloorNumber(), floor.getFloorName(), floor.getDescription(), id);
+    }
+
+    // Delete a floor by ID
+    public int deleteById(int id) {
+        String sql = "DELETE FROM floors WHERE floor_id = ?";
+        return jdbcTemplate.update(sql, id);
+    }
 }

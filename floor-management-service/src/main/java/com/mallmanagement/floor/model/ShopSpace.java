@@ -2,10 +2,10 @@ package com.mallmanagement.floor.model;
 
 public class ShopSpace {
     private Integer spaceId;
-    private Integer floorId;      // Foreign Key to link with Floor
-    private String shopName;      // e.g. "Nike"
-    private String category;      // e.g. "Fashion"
-    private String status;        // e.g. "AVAILABLE", "OCCUPIED"
+    private Integer floorId;      
+    private String shopName;    
+    private String category;     
+    private String status;       
 
     // Empty Constructor
     public ShopSpace() {}

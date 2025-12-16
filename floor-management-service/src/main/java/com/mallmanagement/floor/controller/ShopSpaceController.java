@@ -28,4 +28,18 @@ public class ShopSpaceController {
     public List<ShopSpace> getSpacesByFloor(@PathVariable int floorId) {
         return shopSpaceService.getSpacesByFloor(floorId);
     }
+
+    // Update a shop space by ID
+    // URL: http://localhost:8081/api/spaces/update/{spaceId}
+    @PutMapping("/update/{spaceId}")
+    public ResponseEntity<String> updateSpace(@PathVariable int spaceId, @RequestBody ShopSpace space) {
+        return ResponseEntity.ok(shopSpaceService.updateShopSpace(spaceId, space));
+    }
+
+    // Delete a shop space by ID
+    // URL: http://localhost:8081/api/spaces/delete/{spaceId}
+    @DeleteMapping("/delete/{spaceId}")
+    public ResponseEntity<String> deleteSpace(@PathVariable int spaceId) {
+        return ResponseEntity.ok(shopSpaceService.deleteShopSpace(spaceId));
+    }
 }

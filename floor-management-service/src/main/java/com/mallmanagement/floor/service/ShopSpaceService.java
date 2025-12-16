@@ -22,4 +22,20 @@ public class ShopSpaceService {
     public List<ShopSpace> getSpacesByFloor(int floorId) {
         return shopSpaceRepository.findByFloorId(floorId);
     }
+
+    public String updateShopSpace(int spaceId, ShopSpace space) {
+        int rows = shopSpaceRepository.update(spaceId, space);
+        if (rows > 0) {
+            return "Shop Space updated successfully!";
+        }
+        return "Shop Space not found or update failed.";
+    }
+
+    public String deleteShopSpace(int spaceId) {
+        int rows = shopSpaceRepository.deleteById(spaceId);
+        if (rows > 0) {
+            return "Shop Space deleted successfully!";
+        }
+        return "Shop Space not found or delete failed.";
+    }
 }
